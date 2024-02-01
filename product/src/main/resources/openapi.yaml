@@ -1,0 +1,34 @@
+openapi: "3.0.0"
+info:
+  title: Nome da API
+  description: Uma breve descrição da sua API.
+  version: "1.0.0"
+paths:
+  /product:
+    get:
+      summary: List all products
+      operationId: listProduct
+      tags:
+        - products
+      responses:
+        '200': # status code
+          description: A JSON array of products
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProductRepresentation'
+components:
+  schemas:
+    ProductRepresentation:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string

@@ -1,19 +1,33 @@
 package com.productManager.product.service;
 
 import com.productManager.product.domain.Product;
-import com.productManager.product.repository.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
 public class ProductService {
 
-    @Autowired
-    private ProductRepository repository;
+    @PersistenceContext
+    private EntityManager em;
 
-    public List<Product> listProduct() {
-        return repository.findAll();
+    @Transactional
+    public Product saveProduct(Product product) {
+        if (product.getId() == null) {
+            em.persist(product);
+            return product;
+        } else {
+            return em.merge(product);
+        }
+    }
+
+    public Product findProductById(Integer id) {
+        return em.find(Product.class, id);
+    }
+
+    public List<Product> listAllProducts() {
+        return em.createQuery("SELECT p FROM Product p", Product.class).getResultList();
     }
 }

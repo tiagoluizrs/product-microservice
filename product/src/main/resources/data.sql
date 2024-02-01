@@ -1,2 +1,3 @@
-INSERT INTO product (id, name) VALUES (1, 'Produto 1');
-INSERT INTO product (id, name) VALUES (2, 'Produto 2');
+CREATE TABLE IF NOT EXISTS product (id BIGINT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255));
+INSERT INTO product (name) VALUES ('Descrição do Produto 1');
+INSERT INTO product (name) VALUES ('Descrição do Produto 2');

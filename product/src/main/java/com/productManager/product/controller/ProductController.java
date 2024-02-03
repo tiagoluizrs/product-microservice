@@ -2,21 +2,28 @@ package com.productManager.product.controller;
 
 import com.productManager.product.domain.Product;
 import com.productManager.product.service.ProductService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@AllArgsConstructor
+@RequestMapping("api/product")
 public class ProductController {
 
-  @Autowired
-  private ProductService productService;
+    @Autowired
+    private ProductService service;
 
-  @GetMapping("/product")
-  public List<Product> listProduct() {
-    return productService.listAllProducts();
-  }
+    // Build Get All Users REST API
+    // http://localhost:8080/api/product
+    @GetMapping
+    public ResponseEntity<List<Product>> getAll(){
+        List<Product> products = service.getAll();
+        return new ResponseEntity<>(products, HttpStatus.OK);
+    }
+
 }

@@ -1,7 +1,8 @@
-package com.productManager.product.service;
+package com.productManager.product.service.impl;
 
 import com.productManager.product.domain.Product;
 import com.productManager.product.repository.ProductRepository;
+import com.productManager.product.service.ProductService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -9,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 
 @Service
 @AllArgsConstructor

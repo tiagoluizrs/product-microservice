@@ -1,0 +1,1 @@
+INSERT INTO "order" (status, created_at) values (1, NOW());

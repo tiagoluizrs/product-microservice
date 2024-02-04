@@ -21,6 +21,9 @@ public class User {
 
     private String name;
 
+    @Column(unique = true, nullable = false)
+    private String email;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id")
     @JsonBackReference

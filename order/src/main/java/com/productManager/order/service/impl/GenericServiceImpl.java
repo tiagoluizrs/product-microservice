@@ -24,9 +24,7 @@ public class GenericServiceImpl<T, ID, R extends JpaRepository<T, ID>> implement
     }
 
     @Override
-    public void save(T entity) {
-        repository.save(entity);
-    }
+    public void save(T entity) { repository.save(entity); }
 
     @Override
     public void update(T entity) {

@@ -24,7 +24,10 @@ public class Order {
     private Long id;
 
     @Column
-    private Integer status;
+    private Integer status = 1;
+
+    @Column(nullable = false, updatable = false)
+    private Long user_id;
 
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
